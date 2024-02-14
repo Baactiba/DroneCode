@@ -1,188 +1,135 @@
 from codrone_edu.drone import *
-
-
-
-
-def forward_stop():
-   drone.set_yaw(0)
-   drone.set_roll(0)
-   drone.set_pitch(-100)
-   drone.move(.1)
-   drone.set_pitch(0)
-   return
-
-
-
-
-def forward_stop():
-   drone.set_yaw(0)
-   drone.set_roll(0)
-   drone.set_pitch(-100)
-   drone.move(.1)
-   drone.set_pitch(0)
-   return
-
-
-
-
-def forward_stop():
-   drone.set_yaw(0)
-   drone.set_roll(0)
-   drone.set_pitch(-100)
-   drone.move(.1)
-   drone.set_pitch(0)
-   return
-
-
-
-
-def forward_stop():
-   drone.set_yaw(0)
-   drone.set_roll(0)
-   drone.set_pitch(-100)
-   drone.move(.1)
-   drone.set_pitch(0)
-   return
-
-
-
-
-def forward_stop():
-   drone.set_yaw(0)
-   drone.set_roll(0)
-   drone.set_pitch(-100)
-   drone.move(.1)
-   drone.set_pitch(0)
-   return
+import time
 
 
 def forward(x):
-   drone.set_yaw(0)
-   drone.set_roll(0)
-   drone.set_pitch(50)
-   drone.move(x)
-   drone.set_pitch(-100)
-   drone.move(.1)
-
-
-   return
-
-
+    drone.set_yaw(0)
+    drone.set_roll(0)
+    drone.set_pitch(50)
+    drone.move(x)
+    drone.set_pitch(-100)
+    drone.move(.1)
+    return
 
 
 def backward(x):
-   drone.set_yaw(0)
-   drone.set_pitch(-50)
-   drone.set_roll(0)
-   drone.move(x)
-   drone.set_pitch(100)
-   drone.move(.1)
-   return
-
-
+    drone.set_yaw(0)
+    drone.set_pitch(-50)
+    drone.set_roll(0)
+    drone.move(x)
+    drone.set_pitch(100)
+    drone.move(.1)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    return
 
 
 def right(x):
-   drone.set_yaw(0)
-   drone.set_roll(50)
-   drone.set_pitch(0)
-   drone.move(x)
-   drone.set_roll(-100)
-   drone.move(.1)
-   return
-
-
+    drone.set_yaw(0)
+    drone.set_roll(50)
+    drone.set_pitch(0)
+    drone.move(x)
+    drone.set_roll(-100)
+    drone.move(.1)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    return
 
 
 def left(x):
-   drone.set_yaw(0)
-   drone.set_roll(-50)
-   drone.set_pitch(0)
-   drone.move(x)
-   drone.set_roll(100)
-   drone.move(.1)
-   return
-
-
+    drone.set_yaw(0)
+    drone.set_roll(-50)
+    drone.set_pitch(0)
+    drone.move(x)
+    drone.set_roll(100)
+    drone.move(.1)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    return
 
 
 def up(x):
-   drone.set_throttle(50)
-   drone.move(x)
-   drone.set_throttle(0)
-   return
-
-
+    drone.set_pitch(0)
+    drone.set_throttle(50)
+    drone.move(x)
+    drone.set_throttle(-100)
+    drone.move(0.1)
+    drone.set_throttle(0)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    return
 
 
 def down(x):
-   drone.set_throttle(-50)
-   drone.move(x)
-   drone.set_throttle(0)
-   return
-
-
+    drone.set_throttle(-50)
+    drone.move(x)
+    drone.set_throttle(100)
+    drone.move(0.1)
+    drone.set_throttle(0)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    return
 
 
 drone = Drone()
 drone.pair()
 
-
 print(drone.get_color_data())
 
-
 drone.takeoff() # height - 20-30 inches
-forward(5)      # move 36 inches forward
-
-
-archLoopCount = 2;
+forward(1)# move 36 inches forward
+up(0.5)
+left(.30)
+"""archLoopCount = 0;
 archLooped = 0;
 while archLooped < archLoopCount: # arch loop, set archLoopCount to 0 until everything else works
-   up(5)
-   backward(5)
-   down(5)
-   forward(5)
-   archLooped = archLooped+1
+    up(2)
+    backward(3)
+    down(2)
+    forward(3)
+    archLooped = archLooped+1"""
 
+up(.65)       # total height - 48 inches
+forward(1.75)  # move 72 inches forward
 
-up(3)       # total height - 48 inches
-forward(5)  # move 72 inches forward
-
-
-keyholeLoopCount = 2;
-keyholeLooped = 0;
+"""keyholeLoopCount = 0
+keyholeLooped = 0
 while keyholeLooped < keyholeLoopCount: # keyhole loop, set keyholeLoopCount to 0 until everything else works
-   up(5)
-   backward(5)
-   down(5)
-   forward(5)
-   keyholeLooped = keyholeLooped+1
+    up(5)
+    backward(5)
+    down(5)
+    forward(5)
+    keyholeLooped = keyholeLooped+1"""
 
-
-forward(2)  # forward 18 inches
-up(1)       # up 8 inches
-left(30)    # 30 inches. we are through green keyhole loop, and idk if we are supposed to loop this one.
-
+forward(1)  # forward 18 inches
+up(.25)       # up 8 inches
+left(2)    # 30 inches. we are through green keyhole loop, and idk if we are supposed to loop this one.
 
 down(4)     # down 30 inches, total height 26 inches
-left(2)     # through blue arch
+left(.85)     # through blue arch, 60 inches
+drone.land()
 
-
-# next is all the color sensor stuff which i did not finish but i do know how it works
-
-
-
+colorFront = "error" # detect color
+colorBack = "error2"
+while colorBack != colorFront:
+    try:
+        colorFront = drone.get_front_color()
+        colorBack = drone.get_front_color()
+    finally:
+        pass
+drone.takeoff()
+print(colorFront)
+if colorFront == "red":
+    backward(1)
+if colorFront == "blue":
+    forward(1)
+if colorFront == 'green':
+    right(1)
+drone.land()
 
 drone.close()
-
-
-
-
-"""try:
-   front = drone.get_front_color()
-   back = drone.get_back_color()
-   print(drone.get_color_data())
-finally:
-   print("Module Error")
-"""
-
