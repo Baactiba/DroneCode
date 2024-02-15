@@ -1,0 +1,44 @@
+from codrone_edu.drone import *  # literally just tests the color sensors
+drone = Drone()
+drone.pair()
+
+def validColors(front,back):
+    if (front == back) and (front == "Red" or front == "Blue" or front == "Green"):
+        return True
+    else:
+        return False
+
+print (validColors("error","error2"))
+
+try:
+    print("COLOR TESTING")
+    colorFront = "error" # detect color
+    colorBack = "error2"
+    failCount = 0
+    while not validColors(colorFront,colorBack):
+        try:
+            colorFront = drone.get_front_color()
+            colorBack = drone.get_back_color()
+            print(colorFront+" "+colorBack)
+            failCount += 1
+            if failCount == 100:
+                colorFront = "Green"
+                colorBack = "Green"
+        except:
+            print("error")
+    print(colorFront+" "+colorBack)
+    print("ready to exit")
+    exit()
+
+    drone.takeoff()
+    if colorFront == "Red":
+        backwards(0.5)
+    elif colorFront == "Blue":
+        forwards(0.5)
+    elif colorFront == "Green":
+        right(0.5)
+    else:
+        print("Where do I move?")
+    drone.land()
+except:
+    drone.land()
