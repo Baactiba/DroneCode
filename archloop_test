@@ -1,0 +1,91 @@
+from codrone_edu.drone import *
+
+drone = Drone()  # This program is used to test the coordination of the first loop.
+drone.pair()
+
+
+def forward(x):
+    drone.set_yaw(0)
+    drone.set_roll(0)
+    drone.set_pitch(50)
+    drone.move(x)
+    drone.set_pitch(-100)
+    drone.move(.1)
+    return
+
+def backward(x):
+    drone.set_yaw(0)
+    drone.set_pitch(-50)
+    drone.set_roll(0)
+    drone.move(x)
+    drone.set_pitch(100)
+    drone.move(.1)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    return
+
+
+def right(x):
+    drone.set_yaw(0)
+    drone.set_roll(50)
+    drone.set_pitch(0)
+    drone.move(x)
+    drone.set_roll(-100)
+    drone.move(.1)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    return
+
+
+def left(x):
+    drone.set_yaw(0)
+    drone.set_roll(-50)
+    drone.set_pitch(0)
+    drone.move(x)
+    drone.set_roll(100)
+    drone.move(.1)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    return
+
+
+def up(x):
+    drone.set_pitch(0)
+    drone.set_throttle(50)
+    drone.move(x)
+    drone.set_throttle(-100)
+    drone.move(0.1)
+    drone.set_throttle(0)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    return
+
+def down(x):
+    drone.set_throttle(-50)
+    drone.move(x)
+    drone.set_throttle(100)
+    drone.move(0.1)
+    drone.set_throttle(0)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    return
+
+drone.takeoff()
+
+
+keyholeLoopCount = 2
+keyholeLooped = 0
+while keyholeLooped < keyholeLoopCount: # keyhole loop, set keyholeLoopCount to 0 until everything else works
+    up(2)
+    backward(1)
+    down(2)
+    forward(1)
+    keyholeLooped = keyholeLooped+1
+
+
+drone.land()
