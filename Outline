@@ -15,6 +15,9 @@ def forward(x):  # forward 1 - 18-19 inches. use 0.1 for stabilization
     drone.move(x)
     drone.set_pitch(-100)
     drone.move(.1)
+    drone.set_yaw(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
     return
 
 def backward(x):
