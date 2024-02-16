@@ -97,7 +97,7 @@ archLooped = 0;
 while archLooped < archLoopCount: # arch loop, set archLoopCount to 0 until everything else works
     up(2)
     backward(3)
-    down(2)
+    down(2.2)
     forward(3)
     archLooped = archLooped+1"""
 
